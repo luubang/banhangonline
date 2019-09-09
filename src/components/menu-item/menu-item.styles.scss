@@ -2,13 +2,14 @@
   min-width: 30%;
   height: 240px;
   flex: 1 1 auto;
-  display: flex;
+  display : flex;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
   box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.4);
   margin: 0 7.5px 15px;
   overflow: hidden;
+  position : relative;
 
   &:hover {
     cursor: pointer;
@@ -28,13 +29,13 @@
     background-position: top;
   }
 
-  &:first-child {
-    margin-right: 7.5px;
-  }
+  // &:first-child {
+  //   margin-right: 7.5px;
+  // }
 
-  &:last-child {
-    margin-left: 7.5px;
-  }
+  // &:last-child {
+  //   margin-left: 7.5px;
+  // }
 
   .background-image {
     width: 100%;
