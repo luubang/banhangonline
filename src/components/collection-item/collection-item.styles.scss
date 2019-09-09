@@ -10,7 +10,8 @@
     height: 95%;
     background-size: cover;
     background-position: center;
-    margin-bottom: 5px;
+    // margin-bottom: 5px;
+    border-radius: 5px;
   }
 
   .collection-footer {
@@ -22,11 +23,12 @@
 
     .name {
       width: 90%;
-      margin-bottom: 15px;
+      // margin-bottom: 15px;
     }
 
     .price {
       width: 10%;
+      text-align: right;
     }
   }
 }
