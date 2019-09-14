@@ -7,7 +7,7 @@
   justify-content: center;
   border-radius: 5px;
   box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.4);
-  margin: 0 7.5px 15px;
+  margin: 0 7.5px 15px 0;
   overflow: hidden;
   position : relative;
 
@@ -27,6 +27,15 @@
   &.large {
     height: 380px;
     background-position: top;
+  }
+
+  &:nth-child(2) {
+    margin-left: 7.5px;
+  }
+
+  &:nth-child(3), &:last-child {
+    margin-left : 7.5px;
+    margin-right : 0;
   }
 
   // &:first-child {
