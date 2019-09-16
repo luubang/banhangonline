@@ -13,6 +13,23 @@
     font-family: "Modak";
     opacity: 0.8;
   }
+  .name-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border : 1px rgba(0, 0, 0, 0.555) solid;
+    border-radius : 4px;
+    margin-right : 10px;
+   
+    & h4 {
+      padding: 0 10px;
+    }
+    .option:hover{
+      color: white;
+      background-color: black;
+      border-radius : 4px;
+    }
+  }
 
   .options {
     width: 50%;

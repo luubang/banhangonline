@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 import 'firebase/firestore';
 import 'firebase/auth';
 
+//lên Firebase setting lấy sdk, nhớ enable sign-in method trong authentication
 const config = {
     apiKey: "AIzaSyDQBr1i4PmGTdaASEEp5zPjH4Of3a-3aTA",
     authDomain: "banhangonline-db.firebaseapp.com",
@@ -12,6 +13,22 @@ const config = {
     appId: "1:726271593547:web:9c2eb2ff8861984bf091ce"
 };
 
+// các bước cơ bản để add firebase vào web
+firebase.initializeApp(config);
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+
+// bước để add google authentication sign-in vào web
+const provider = new firebase.auth.GoogleAuthProvider();
+
+//luôn luôn trigger pop-up khi mà sử dụng google auth provider
+provider.setCustomParameters({
+    prompt: 'select_account'
+});
+
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
+//bước tạo doc tên database
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!userAuth) return;
 
@@ -42,15 +59,5 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     }
     return userRef;
 }
-
-firebase.initializeApp(config);
-
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
-
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({prompt: 'select_account'});
-
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
