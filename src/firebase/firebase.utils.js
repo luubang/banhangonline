@@ -28,14 +28,22 @@ provider.setCustomParameters({
 
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
-//bước tạo doc tên database
+//bước nhét prop trên Auth sang Database
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!userAuth) return;
 
+    //QueryReference chỉ để cho ta biết thông tin, và còn dùng để get hay set data trên firestore
+    //QuerySnapshot thì cho ta biết data
+
+    //DocReference thì dùng CRUD dc, set() get() update() delete()
+
+    //B1 : lấy thông tin vị trí từ firestore => DocReference (query reference)
     const userRef = firestore.doc(`users/${userAuth.uid}`);
 
+    //B2 : sau đó mới get() sẽ lấy ra 1 cái snapshot object từ cái vị trí doc đó => DocSnapshot ref back to DocReference
     const snapShot = await userRef.get();
 
+    //B3 : xem có data tại nơi doc đó chưa nếu chưa có thì tạo 
     if (!snapShot.exists) {
         const {
             displayName,
@@ -44,6 +52,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
         const createdAt = new Date();
 
+    //B4 : đẩy lên fire store
         try {
             await userRef.set({
                 displayName,
