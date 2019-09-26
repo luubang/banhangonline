@@ -1,17 +1,18 @@
 .header {
-  height: 70px;
+  height: 100px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
+  padding : 25px 0; 
 
   .logo-container {
     height: 100%;
-    width: 70px;
+    width: 110px;
     padding: 0 25px;
     font-size: 50px;
     font-family: "Modak";
     opacity: 0.8;
+    
   }
   .name-box {
     display: flex;
