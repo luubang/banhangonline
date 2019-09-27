@@ -29,5 +29,10 @@
   .remove-button {
     padding-left: 12px;
     cursor: pointer;
+
+    &:hover {
+      font-size : 30px;
+      font-weight: 800;
+    }
   }
 }
