@@ -21,7 +21,7 @@ const Header = ({ currentUser }) => (
 
       {currentUser ? (
         <div className="name-box">
-          <h4>Hello,{currentUser.displayName.toUpperCase()}</h4>
+          <h4 className="sign-out-greeting">Hello, {currentUser.displayName} </h4>
           <div className="option" onClick={() => auth.signOut()}>
             Sign Out
           </div>

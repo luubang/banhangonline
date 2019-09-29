@@ -1,0 +1,35 @@
+.footer {
+  height: 150px;
+  background-color: rgba(0, 0, 0, 0.781);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin : 0 25px;
+  border-radius: 2px;
+
+  .footer-category {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    
+    width: 50%;
+    justify-content: space-around;
+
+    .footer-category-item {
+      color: white;
+    
+    }
+  }
+
+  .footer-contact {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    align-items: center;
+    font-family: "Modak";
+    color:white;
+    footer: 50px;
+    text-align: center;
+  }
+}
