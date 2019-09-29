@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 const CartIcon = ({toggleCartHidden,itemCount}) => (
     
     <div className="cart-icon" onClick={toggleCartHidden}>
-        <ShoppingIcon className='shopping-icon'/>
+        <ShoppingIcon className='shopping-icon'> </ShoppingIcon>
         <span className="item-count">{itemCount}</span> 
     </div>
 );

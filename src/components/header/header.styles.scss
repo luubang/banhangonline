@@ -3,16 +3,23 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding : 25px 0; 
+  padding : 25px 25px; 
+  box-shadow: 0 -3px 10px;
+  position: sticky;
+  top : 0;
+  z-index: 5;
+  background-color: white;
+
 
   .logo-container {
     height: 100%;
     width: 110px;
-    padding: 0 25px;
+    // padding: 0 25px;
     font-size: 50px;
     font-family: "Modak";
     opacity: 0.8;
-    
+    display: flex;
+    align-items: center;
   }
   .name-box {
     display: flex;
@@ -38,7 +45,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 0 15px;
+    
 
     .option {
       padding: 10px 15px;

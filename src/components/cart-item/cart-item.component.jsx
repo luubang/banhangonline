@@ -1,10 +1,10 @@
 import React from "react";
 
 import "./cart-item.styles.scss";
-import { deleteItem } from "../../redux/cart/cart.actions";
+import { removeItem } from "../../redux/cart/cart.actions";
 import { connect } from "react-redux";
 
-const CartItem = ({ item, deleteItem }) => {
+const CartItem = ({ item, removeItem }) => {
   const { imageUrl, name, price, quantity } = item;
   return (
     <div className="cart-item">
@@ -18,7 +18,7 @@ const CartItem = ({ item, deleteItem }) => {
           {quantity} x ${price}
         </span>
       </div>
-      <div className="remove-button" onClick={() => deleteItem(item)}>
+      <div className="remove-button" onClick={() => removeItem(item)}>
         &#10007;
       </div>
     </div>
@@ -26,7 +26,7 @@ const CartItem = ({ item, deleteItem }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  deleteItem: item => dispatch(deleteItem(item))
+  removeItem: item => dispatch(removeItem(item))
 });
 export default connect(
   null,

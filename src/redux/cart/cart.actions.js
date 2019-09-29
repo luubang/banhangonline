@@ -11,5 +11,11 @@ export const addItem = (item) => ({
 
 export const deleteItem = (item) => ({
     type : Types.DELETE_ITEM,
+    payload: item
+})
+
+export const removeItem = (item) => ({
+    type : Types.REMOVE_ITEM,
     payload : item
 })
+
