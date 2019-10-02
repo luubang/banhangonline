@@ -1,45 +1,45 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import "./checkout.styles.scss";
-import CheckOutItem from "../../components/checkout-item/checkout-item.component";
+import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 
-const CheckoutPage = ({ cartItems }) => {
-  const totalPrice = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+import {
+  selectCartItems,
+  selectCartTotal
+} from '../../redux/cart/cart.selectors';
 
-  return (
-    <div className="checkout-page">
-      <div className="checkout-header">
-        <div className="header-block">
-          <span>Sản phẩm</span>
-        </div>
-        <div className="header-block">
-          <span>Mô tả</span>
-        </div>
-        <div className="header-block">
-          <span>Số lượng</span>
-        </div>
-        <div className="header-block">
-          <span>Giá</span>
-        </div>
-        <div className="header-block">
-          <span>Xoá</span>
-        </div>
+import './checkout.styles.scss';
+
+const CheckoutPage = ({ cartItems, total }) => (
+  <div className='checkout-page'>
+    <div className='checkout-header'>
+      <div className='header-block'>
+        <span>Product</span>
       </div>
-
-      {cartItems.map(item => (
-        <CheckOutItem key={item.id} item={item}/>
-      ))}
-
-      <div className="total">Total : ${totalPrice}</div>
+      <div className='header-block'>
+        <span>Description</span>
+      </div>
+      <div className='header-block'>
+        <span>Quantity</span>
+      </div>
+      <div className='header-block'>
+        <span>Price</span>
+      </div>
+      <div className='header-block'>
+        <span>Remove</span>
+      </div>
     </div>
-  );
-};
+    {cartItems.map(cartItem => (
+      <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+    ))}
+    <div className='total'>TOTAL: ${total}</div>
+  </div>
+);
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({
-  cartItems
+const mapStateToProps = createStructuredSelector({
+  cartItems: selectCartItems,
+  total: selectCartTotal
 });
+
 export default connect(mapStateToProps)(CheckoutPage);

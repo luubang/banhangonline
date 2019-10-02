@@ -1,13 +1,18 @@
 import React from "react";
-import "./header.styles.scss";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+
 import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
-import CartDropDown from "../cart-dropdown/cart-dropdown.component";
-// import { ReactComponent as Logo } from "../../assets/crown.svg";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import { selectCartHidden } from "../../redux/cart/cart.selectors";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
+import {signOutCartHidden} from '../../redux/cart/cart.actions';
 
-const Header = ({ currentUser, cartHidden }) => (
+import "./header.styles.scss";
+
+const Header = ({ currentUser, hidden,signOutCartHidden }) => (
   <div className="header">
     <div className="logo-container">
       <span>
@@ -15,35 +20,37 @@ const Header = ({ currentUser, cartHidden }) => (
       </span>
     </div>
     <div className="options">
-      <Link to="/shop" className="option">
-        Shop
+      <Link className="option" to="/shop">
+        SHOP
       </Link>
-      <Link to="/shop" className="option">
-        Contact
+      <Link className="option" to="/shop">
+        CONTACT
       </Link>
-
       {currentUser ? (
-        <div className="name-box">
-          <h4 className="sign-out-greeting">Hello, {currentUser.displayName} </h4>
-          <div className="option" onClick={() => auth.signOut()}>
-            Sign Out
+        <div className="user-sign-in">
+          <div className="option" onClick={() => {auth.signOut(); signOutCartHidden()}}>
+            SIGN OUT
           </div>
+
+          <CartIcon />
         </div>
       ) : (
         <Link className="option" to="/signin">
-          Sign In
+          SIGN IN
         </Link>
       )}
-
-      <CartIcon />
     </div>
-    {cartHidden ? null : <CartDropDown />}
+    {hidden ? null : <CartDropdown />}
   </div>
 );
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser,
-  cartHidden: state.cart.isHidden
+const mapDispatchToProps = (dispatch) => ({
+  signOutCartHidden : () => dispatch(signOutCartHidden())
+})
+
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectCartHidden
 });
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps,mapDispatchToProps)(Header);

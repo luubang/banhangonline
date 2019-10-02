@@ -1,4 +1,9 @@
-export const TOGGLE_CART_HIDDEN = "TOGGLE_CART_HIDDEN";
-export const ADD_ITEM = "ADD_ITEM";
-export const DELETE_ITEM = "DELETE_ITEM";
-export const REMOVE_ITEM = "REMOVE_ITEM";
+const CartActionTypes = {
+  TOGGLE_CART_HIDDEN: 'TOGGLE_CART_HIDDEN',
+  ADD_ITEM: 'ADD_ITEM',
+  REMOVE_ITEM: 'REMOVE_ITEM',
+  CLEAR_ITEM_FROM_CART: 'CLEAR_ITEM_FROM_CART',
+  SIGN_OUT_CART_HIDDEN: 'SIGN_OUT_CART_HIDDEN'
+};
+
+export default CartActionTypes;
